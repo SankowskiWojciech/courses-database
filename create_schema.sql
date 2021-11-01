@@ -104,29 +104,29 @@ CREATE TABLE TOKEN
 CREATE TABLE GROUP_LESSON
 (
     ID                     VARCHAR(36) PRIMARY KEY,
-    TITLE                  VARCHAR(50)                                   NOT NULL,
-    START_DATE             TIMESTAMPTZ                                   NOT NULL,
-    END_DATE               TIMESTAMPTZ                                   NOT NULL,
+    TITLE                  VARCHAR(50)                                     NOT NULL,
+    START_DATE             TIMESTAMPTZ                                     NOT NULL,
+    END_DATE               TIMESTAMPTZ                                     NOT NULL,
     DESCRIPTION            VARCHAR(2000),
-    CREATION_DATE_TIME     TIMESTAMPTZ                                   NOT NULL,
+    CREATION_DATE_TIME     TIMESTAMPTZ                                     NOT NULL,
     MODIFICATION_DATE_TIME TIMESTAMPTZ,
-    ORGANIZATION_ID        VARCHAR(50) REFERENCES ORGANIZATION (EMAIL_ADDRESS),
-    TUTOR_ID               VARCHAR(50) REFERENCES TUTOR (EMAIL_ADDRESS)  NOT NULL,
-    GROUP_ID               VARCHAR(50) REFERENCES GROUP_OF_STUDENTS (ID) NOT NULL
+    SUBDOMAIN_ID           VARCHAR(50) REFERENCES SUBDOMAIN (SUBDOMAIN_ID) NOT NULL,
+    TUTOR_ID               VARCHAR(50) REFERENCES TUTOR (EMAIL_ADDRESS)    NOT NULL,
+    GROUP_ID               VARCHAR(50) REFERENCES GROUP_OF_STUDENTS (ID)   NOT NULL
 );
 
 CREATE TABLE INDIVIDUAL_LESSON
 (
     ID                     VARCHAR(36) PRIMARY KEY,
-    TITLE                  VARCHAR(50)                                    NOT NULL,
-    START_DATE             TIMESTAMPTZ                                    NOT NULL,
-    END_DATE               TIMESTAMPTZ                                    NOT NULL,
+    TITLE                  VARCHAR(50)                                     NOT NULL,
+    START_DATE             TIMESTAMPTZ                                     NOT NULL,
+    END_DATE               TIMESTAMPTZ                                     NOT NULL,
     DESCRIPTION            VARCHAR(2000),
-    CREATION_DATE_TIME     TIMESTAMPTZ                                    NOT NULL,
+    CREATION_DATE_TIME     TIMESTAMPTZ                                     NOT NULL,
     MODIFICATION_DATE_TIME TIMESTAMPTZ,
-    ORGANIZATION_ID        VARCHAR(50) REFERENCES ORGANIZATION (EMAIL_ADDRESS),
-    TUTOR_ID               VARCHAR(50) REFERENCES TUTOR (EMAIL_ADDRESS)   NOT NULL,
-    STUDENT_ID             VARCHAR(50) REFERENCES STUDENT (EMAIL_ADDRESS) NOT NULL
+    SUBDOMAIN_ID           VARCHAR(50) REFERENCES SUBDOMAIN (SUBDOMAIN_ID) NOT NULL,
+    TUTOR_ID               VARCHAR(50) REFERENCES TUTOR (EMAIL_ADDRESS)    NOT NULL,
+    STUDENT_ID             VARCHAR(50) REFERENCES STUDENT (EMAIL_ADDRESS)  NOT NULL
 );
 
 CREATE TABLE FILE
